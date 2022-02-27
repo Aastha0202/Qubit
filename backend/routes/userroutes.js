@@ -234,4 +234,68 @@ router.get(
   })
 );
 
+
+// lh:500/user?college_id = 19
+//get a user 
+router.get("/", async (req, res) => {
+  const College_id = req.query.College_id;
+  const name = req.query.name;
+  console.log(name);
+  try {
+    const user = College_id 
+      ? await Logins.findById(req.params.College_id)
+      : await Logins.findOne({ name: name });
+    const { password, updatedAt, ...other } = user._doc;
+    res.status(200).json(other);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
+
+//follow a user
+
+router.put("/:id/follow", async (req, res) => {
+  if (req.body.College_id !== req.params.id) {
+    try {
+      const user = await Logins.findById(req.params.id);
+      const currentUser = await Logins.findById(req.body.College_id);
+      if (!user.followers.includes(req.body.College_id)) {
+        await user.updateOne({ $push: { followers: req.body.College_id } });
+        await currentUser.updateOne({ $push: { followings: req.params.id } });
+        res.status(200).json("user has been followed");
+      } else {
+        res.status(403).json("you allready follow this user");
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else {
+    res.status(403).json("you cant follow yourself");
+  }
+});
+
+
+//unfollow a user
+
+router.put("/:id/unfollow", async (req, res) => {
+  if (req.body.College_id !== req.params.id) {
+    try {
+      const user = await Logins.findById(req.params.id);
+      const currentUser = await Logins.findById(req.body.College_id);
+      if (user.followers.includes(req.body.College_id)) {
+        await user.updateOne({ $pull: { followers: req.body.College_id } });
+        await currentUser.updateOne({ $pull: { followings: req.params.id } });
+        res.status(200).json("user has been unfollowed");
+      } else {
+        res.status(403).json("you dont follow this user");
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else {
+    res.status(403).json("you cant unfollow yourself");
+  }
+});
+
 module.exports = router;

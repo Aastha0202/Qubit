@@ -2,7 +2,7 @@ import React from 'react';
 import './Settings.css';
 
 export default function Setting() {
-    const PostPic = require('./pic.jpg');
+    const PostPic = require('../../Image/pic.jpg');
     return (
         <div className="settings">
             <div className="img-container">

@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connctDB = require("./config/db");
 const cors = require("cors");
+const postRoute = require("./routes/posts");
 // const login = require("./models/userschema");
 const app = express();
 dotenv.config({
@@ -18,7 +19,7 @@ app.use(express.json());
 // );
 //link the router file to connect with frontend easily.
 app.use(require("./routes/userroutes"));
-
+app.use("/post",postRoute);
 const port = process.env.PORT || 5000;
 const server = app.listen(port, console.log(`server starting...${port}`));
 const io = require("socket.io")(server, {

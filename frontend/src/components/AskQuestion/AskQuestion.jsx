@@ -1,16 +1,16 @@
 import React from "react";
 import './AskQuestion.css';
-import './Post.css';
+import '../Post/Post.css';
 import CreateIcon from '@material-ui/icons/Create';
 import Avatar from "@material-ui/core/Avatar";
 import ImageIcon from '@material-ui/icons/Image';
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import EventNoteIcon from '@material-ui/icons/EventNote';
 import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay';
-import InputOption from './InputOption';
+import InputOption from '../InputOption/InputOption';
 
 export default function AskQuestion() {
-  const PostPic = require('./pic.jpg');
+  const PostPic = require('../../ad.jpg');
   return (
     <div className="post">
       <div className="post__header">

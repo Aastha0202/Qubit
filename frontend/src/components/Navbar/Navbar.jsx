@@ -1,5 +1,5 @@
 import { useState, useContext, React } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink ,Link } from "react-router-dom";
 import { IoIosAddCircle } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { FaSearch } from "react-icons/fa";
@@ -11,7 +11,8 @@ import {
 import "./Navbar.css";
 import ReactSearchBox from "react-search-box";
 import SearchIcon from "@material-ui/icons/Search";
-import UploadPost from "./UploadPost";
+import UploadPost from "../Uploadpost/UploadPost";
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = (e) => {
@@ -25,7 +26,10 @@ const Navbar = () => {
       <nav className="main-nav">
         <div className="logo">
           {/*first logo */}
-          <h2>Qurbit</h2>
+          <Link to="/">
+           <h2>Qurbit</h2>
+          </Link>
+         
         </div>
         {/*2nd search */}
         <div className="search-box">

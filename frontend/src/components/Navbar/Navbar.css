@@ -25,6 +25,9 @@ li {
     grid-template-columns: 10rem 1fr 1fr 2fr 5rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+     position: sticky;
+     top: 0;
+     z-index: 999;
   }
 
   .logo {

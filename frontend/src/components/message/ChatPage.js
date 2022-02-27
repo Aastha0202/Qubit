@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/layout";
 import React, { useEffect, useState } from "react";
-import Navbar from "../login/Navbar";
+import Navbar from "../Navbar/Navbar";
 import SlideDrawer from "./SlideDrawer";
 import MyChats from "./MyChats";
 import ChatBox from "./ChatBox";

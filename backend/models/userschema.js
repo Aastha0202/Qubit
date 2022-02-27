@@ -1,4 +1,5 @@
 //userschema is table for storing the information about users of our website
+const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const userschema = new mongoose.Schema(
   {
@@ -23,7 +24,24 @@ const userschema = new mongoose.Schema(
       default:
         "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
     },
+    followers: {
+      type: Array,
+      default: [],
+    },
+    followings: {
+      type: Array,
+      default: [],
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    desc: {
+      type: String,
+      max: 50,
+    },
   },
+
   {
     timestamps: true,
   }

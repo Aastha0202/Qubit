@@ -47,7 +47,7 @@ const SlideDrawer = () => {
   const [loadingChat, setloadingChat] = useState(false);
   const toast = useToast();
   const handlesearch = async () => {
-    // console.log(user.user.token);
+     console.log(user.user.token);
     if (!search) {
       toast({
         title: "Please Enter something in search",
